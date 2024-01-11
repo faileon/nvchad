@@ -10,6 +10,7 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern ".git",
   }
 end
 
@@ -35,7 +36,7 @@ lspconfig.angularls.setup {
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = cmd
   end,
-  root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
+  root_dir = lspconfig.util.root_pattern ".git",
 }
 
 -----------
@@ -48,5 +49,5 @@ lspconfig.eslint.setup {
       command = "EslintFixAll",
     })
   end,
-  root_dir = lspconfig.util.root_pattern ".eslintrc.json",
+  root_dir = lspconfig.util.root_pattern ".git",
 }
