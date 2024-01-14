@@ -35,6 +35,7 @@ M.mason = {
     "angular-language-server",
     "eslint-lsp",
     "tree-sitter-cli",
+    "tailwindcss-language-server",
   },
 }
 
