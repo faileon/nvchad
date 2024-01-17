@@ -121,39 +121,33 @@ lspconfig.eslint.setup {
 --   },
 -- }
 
-local constants = require "typescript-tools.protocol.constants"
-local method = constants.CustomMethods.ConfigurePlugin
-local args = {
-  pluginName = "@monodon/typescript-nx-imports-plugin",
-  configuration = {
-    externalFiles = {
-      {
-        mainFile = "C:/Projects/datera/web-applications/apps/absint-app/src/main.ts",
-        directory = "C:/Projects/datera/web-applications/apps/absint-app",
-      },
-    },
-  },
-}
+-- local constants = require "typescript-tools.protocol.constants"
+-- local method = constants.CustomMethods.ConfigurePlugin
+-- local args = {
+--   pluginName = "@monodon/typescript-nx-imports-plugin",
+--   configuration = {
+--     externalFiles = {
+--       {
+--         mainFile = "C:/Projects/datera/web-applications/apps/absint-app/src/main.ts",
+--         directory = "C:/Projects/datera/web-applications/apps/absint-app/src",
+--       },
+--       -- {
+--       --   mainFile = "C:/Projects/datera/web-applications/libs/dashboards/common/models/dashboard/src/index.ts",
+--       --   directory = "C:/Projects/datera/web-applications/libs/dashboards/common/models/dashboard/src",
+--       -- },
+--     },
+--   },
+-- }
 -----------
 -- TSSERVER via typescript-tools:
 ----------
 require("typescript-tools").setup {
-  on_init = function(client, init_result)
-    -- print("initialized", vim.inspect(client))
-    print("requesting", method, args)
-    -- client.request(method, args)
-    local res = vim.lsp.buf_request_sync(0, method, args, function()
-      print "handled"
+  on_init = function(client, bufnr)
+    vim.schedule(function()
+      vim.cmd.NxInit()
     end)
-    print("result", vim.inspect(res))
   end,
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print "typescript-tools on attach"
-
-    local req = client.request(method, args)
-    print("req sent", req)
-  end,
+  on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern ".git",
   settings = {
@@ -163,3 +157,22 @@ require("typescript-tools").setup {
     tsserver_logs = "verbose",
   },
 }
+----------
+-- autocommand when lsp says a buffer was opened
+----------
+-- local augroup = vim.api.nvim_create_augroup("NxGroup", { clear = true })
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = {
+--     "TypescriptTools_" .. constants.LspMethods.DidOpen,
+--     -- "TypescriptTools_" .. constants.LspMethods.DidChange,:
+--   },
+--   callback = function(event)
+--     -- print("DidOpen", vim.inspect(event))
+--     -- TODO: only send it to typescript-tools client?
+--     -- local clients = vim.lsp.get_active_clients()
+--     vim.lsp.buf_request(0, method, args, function()
+--       print("tsserver handled", method)
+--     end)
+--   end,
+--   group = augroup,
+-- })
