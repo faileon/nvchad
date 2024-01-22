@@ -12,6 +12,9 @@ M.general = {
       end,
       "formatting",
     },
+
+    -- close all buffers
+    ["<leader>ax"] = { ":wa | %bd | e#<CR>", "close all buffers" },
   },
   v = {
     [">"] = { ">gv", "indent" },
