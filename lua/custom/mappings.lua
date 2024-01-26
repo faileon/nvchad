@@ -15,6 +15,10 @@ M.general = {
 
     -- close all buffers
     ["<leader>ax"] = { ":wa | %bd | e#<CR>", "close all buffers" },
+
+    -- organize imports via tstools
+    ["<leader>lo"] = { ":TSToolsOrganizeImports<CR>", "Organize imports via TSTools" },
+    ["<leader>li"] = { ":TSToolsAddMissingImports<CR>", "Add missing imports via TSTools" },
   },
   v = {
     [">"] = { ">gv", "indent" },

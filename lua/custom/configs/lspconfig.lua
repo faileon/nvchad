@@ -176,3 +176,8 @@ require("typescript-tools").setup {
 --   end,
 --   group = augroup,
 -- })
+
+require("todo-comments").setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
