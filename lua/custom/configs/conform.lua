@@ -9,6 +9,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     angular = { "prettier" },
+    svelte = { "prettier" },
 
     sh = { "shfmt" },
   },

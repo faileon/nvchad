@@ -65,6 +65,7 @@ local cmd = {
 
 lspconfig.angularls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   cmd = cmd,
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = cmd
@@ -89,6 +90,15 @@ lspconfig.eslint.setup {
       command = "EslintFixAll",
     })
   end,
+  root_dir = lspconfig.util.root_pattern ".git",
+}
+
+-----------
+-- SVELTE
+----------
+lspconfig.svelte.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern ".git",
 }
 
@@ -190,8 +200,15 @@ require("typescript-tools").setup {
   settings = {
     tsserver_plugins = {
       "@monodon/typescript-nx-imports-plugin",
+      "typescript-svelte-plugin",
     },
     tsserver_logs = "verbose",
+  },
+
+  filetypes = {
+    "angular",
+    "svelte",
+    "typescript",
   },
 }
 

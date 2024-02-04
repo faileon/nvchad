@@ -55,7 +55,6 @@ local plugins = {
     opts = {},
   },
 
-  -- TODO: asdasd
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
