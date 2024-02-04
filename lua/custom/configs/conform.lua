@@ -8,6 +8,7 @@ local options = {
     typescript = { "prettier" },
     css = { "prettier" },
     html = { "prettier" },
+    angular = { "prettier" },
 
     sh = { "shfmt" },
   },

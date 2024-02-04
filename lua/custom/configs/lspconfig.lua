@@ -3,16 +3,49 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
--- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tailwindcss" }
+-------------------
+-- CSS SERVER
+-------------------
+lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern ".git",
+  filetypes = {
+    "css",
+    "scss",
+    "less",
+  },
+}
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern ".git",
-  }
-end
+-------------------
+-- HTML SERVER
+-------------------
+lspconfig.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern ".git",
+  filetypes = {
+    "angular",
+    "html",
+  },
+}
+
+-------------------
+-- TAILWIND SERVER
+-------------------
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern ".git",
+  filetypes = {
+    "angular",
+    "html",
+    "css",
+    "scss",
+    "sass",
+    "less",
+  },
+}
 
 -------------
 -- ANGULAR
@@ -37,6 +70,10 @@ lspconfig.angularls.setup {
     new_config.cmd = cmd
   end,
   root_dir = lspconfig.util.root_pattern ".git",
+  filetypes = {
+    "angular",
+    "typescript",
+  },
 }
 
 -----------
@@ -157,25 +194,6 @@ require("typescript-tools").setup {
     tsserver_logs = "verbose",
   },
 }
-----------
--- autocommand when lsp says a buffer was opened
-----------
--- local augroup = vim.api.nvim_create_augroup("NxGroup", { clear = true })
--- vim.api.nvim_create_autocmd("User", {
---   pattern = {
---     "TypescriptTools_" .. constants.LspMethods.DidOpen,
---     -- "TypescriptTools_" .. constants.LspMethods.DidChange,:
---   },
---   callback = function(event)
---     -- print("DidOpen", vim.inspect(event))
---     -- TODO: only send it to typescript-tools client?
---     -- local clients = vim.lsp.get_active_clients()
---     vim.lsp.buf_request(0, method, args, function()
---       print("tsserver handled", method)
---     end)
---   end,
---   group = augroup,
--- })
 
 require("todo-comments").setup {
   on_attach = on_attach,
