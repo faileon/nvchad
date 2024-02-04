@@ -26,6 +26,7 @@ lspconfig.html.setup {
   root_dir = lspconfig.util.root_pattern ".git",
   filetypes = {
     "angular",
+    "svelte",
     "html",
   },
 }
@@ -39,11 +40,17 @@ lspconfig.tailwindcss.setup {
   root_dir = lspconfig.util.root_pattern ".git",
   filetypes = {
     "angular",
+    "svelte",
     "html",
     "css",
     "scss",
     "sass",
     "less",
+  },
+  init_options = {
+    userLanguages = {
+      angular = "html",
+    },
   },
 }
 

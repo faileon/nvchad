@@ -17,16 +17,11 @@ vim.wo.relativenumber = true
 -- Current line shows as absolute number
 vim.wo.number = true
 
-vim.filetype.add {
-  extension = {
-    angular = "angular",
-  },
-}
 -- Set the filetype of Angular HTML Component files to 'angular'
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = "*.component.html",
---   command = "set filetype=angular",
--- })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.component.html",
+  command = "set filetype=angular",
+})
 
 -------------
 -- nx command testing
