@@ -59,6 +59,22 @@ local plugins = {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  -- nvim-cmp source for packages and their versions in package.json files
+  {
+    "David-Kunz/cmp-npm",
+    ft = "json",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("cmp-npm").setup {
+        ignore = {},
+        only_semantic_versions = true,
+      }
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

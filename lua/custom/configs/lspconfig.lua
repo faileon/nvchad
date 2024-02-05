@@ -110,6 +110,26 @@ lspconfig.svelte.setup {
 }
 
 -----------
+-- JSON-LS
+----------
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern ".git",
+  settings = {
+    json = {
+      schemas = {
+        {
+          fileMatch = { "package.json" },
+          url = "https://json.schemastore.org/package.json",
+        },
+        -- TODO: add other schemas, perhaps for project.json from nx?
+      },
+    },
+  },
+}
+
+-----------
 -- TSSERVER
 ----------
 -- lspconfig.tsserver.setup {

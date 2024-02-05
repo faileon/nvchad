@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.component.html",
   command = "set filetype=angular",
 })
-
+-- print("Vim ENV", vim.inspect(vim.env.PATH))
 -------------
 -- nx command testing
 -------------
