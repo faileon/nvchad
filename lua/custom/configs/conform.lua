@@ -10,6 +10,7 @@ local options = {
     html = { "prettier" },
     angular = { "prettier" },
     svelte = { "prettier" },
+    json = { "prettier" },
 
     sh = { "shfmt" },
   },
