@@ -229,11 +229,10 @@ require("typescript-tools").setup {
       "@monodon/typescript-nx-imports-plugin",
       "typescript-svelte-plugin",
     },
-    tsserver_logs = "verbose",
+    -- tsserver_logs = "verbose",
   },
 
   filetypes = {
-    "angular",
     "svelte",
     "typescript",
   },
