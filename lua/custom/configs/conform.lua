@@ -7,10 +7,12 @@ local options = {
     javascript = { "prettier" },
     typescript = { "prettier" },
     css = { "prettier" },
+    scss = { "prettier" },
     html = { "prettier" },
     angular = { "prettier" },
     svelte = { "prettier" },
     json = { "prettier" },
+    yaml = { "prettier" },
 
     sh = { "shfmt" },
   },

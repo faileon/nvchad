@@ -11,6 +11,7 @@ local opt = vim.opt
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.fileformats = "unix,dos"
 
 -- Relative numbers
 vim.wo.relativenumber = true
