@@ -75,6 +75,16 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     opts = overrides.cmp,
   },
+
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    ft = "markdown",
+    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require "custom.configs.markdown"
+    end,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
