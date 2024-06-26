@@ -23,11 +23,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.component.html",
   command = "set filetype=angular",
 })
+-- Autodetect hyprland config for treesitter
+vim.filetype.add {
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+}
 -- print("Vim ENV", vim.inspect(vim.env.PATH))
 -------------
 -- nx command testing
 -------------
 vim.api.nvim_create_user_command("NxInit", function()
+  -- check if we are in a nx workspace by looking for nx.json
+  local nx_conf = io.open("nx.json", "r")
+  if nx_conf == nil then
+    print "Not an nx workspace"
+    return
+  end
+
   print "Running nx init..."
   local now = tostring(os.time())
   local fileName = string.format("%s_graph.json", now)
