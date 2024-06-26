@@ -35,6 +35,12 @@ M.ui = {
       " ⠀⠀⠀⠀⠀⠙⢦⣴⠏⠀⠀⠀⠀⠀⠀⠉⠳⠶⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ",
     },
   },
+  -- lsp = {
+  --   signature = {
+  --     disabled = true,
+  --     silent = true,
+  --   },
+  -- },
 }
 
 M.plugins = "custom.plugins"
